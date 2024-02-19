@@ -1,0 +1,41 @@
+simulator_name: 'huc'
+
+rl:
+  mode: test    # Select from: train, continual_train, test, debug (check_env many times for the baseline).
+
+  train:
+    total_timesteps: 100000000
+    checkpoints_folder_name: '1119_POMDPRead_AblationStudy_SpatialGaussianDistribution_100m'
+    num_workers: 10   # Smaller than the laptop's number of processes: 16 - should not be the maximum capacity of the processors, otherwise the local memory will overflow.
+    num_steps: 5000   # TODO do not change this parameter
+    batch_size: 500   # We recommend using a `batch_size` that is a factor of `n_steps * n_envs`
+    ent_coef: 0.03    # Entropy coefficient
+    n_epochs: 10       # Number of epochs
+    clip_range: 0.2   # Clipping range
+    clip_range_vf: None   # Clipping range for the value function
+    learning_rate:   # Learning rate
+      initial_value: 1e-5
+      min_value: 1e-7
+      threshold: 0.8
+    device: 'cuda'     # 'cuda' for default
+    save_freq: 5000000  # Save a checkpoint every 0.5 million steps
+
+  test:
+    num_episodes: 10
+    layout_name: ''    # Choose from 'interline-spacing-100', 'bottom-center', 'middle-right'
+    loaded_model_name: 'rl_model_100000000_steps'
+    continual_logs_name: 'PPO_201'
+    grid_search_perturbation:
+      enable: False
+      dwell_steps: [[0.2, 0.5], 0.01]
+      amp_tuning_factor: [[0, 1], 0.01]
+      perturbation_amp_noise_scale: [[0, 0.015], 0.001]
+    grid_search_selection:
+      enable: True
+      init_delta_t: [[0.9, 1], 0.1]   # This is set to 0.9 is because we only care about delta_t == 1.0 when generating data.
+      init_sigma_position_memory: [[4.5, 5], 0.5]   # This parameter is set to 4.5 when generating data.
+      weight_memory_decay: [[0.5, 1], 0.05] # the upper bound might should be 0.75
+      spatial_dist_coeff: [[1, 5], 0.5]   # TODO: change to [1, 5] to be aligned with 0827 experiment and 0901 experiment
+      layouts: ['L0', 'L50', 'L100']
+#      layouts: ['L0', 'L25', 'L50', 'L75', 'L100', 'L125']
+      num_episodes: 100

@@ -1,0 +1,1 @@
+init_delta_t,init_sigma_position_memory,weight_memory_decay,spatial_dist_coeff,layout,episode_num,steps,error,true_last_word_mjidx,gaze_positions_list,true_last_word_memory_list,gaze_positions_list,all_words_belief_list

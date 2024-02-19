@@ -1,0 +1,52 @@
+simulator_name: 'hrl'
+
+rl:
+  mode: test    # Select from: train, continual_train, test, debug (check_env many times for the baseline).
+
+  train:
+    total_timesteps: 200000000
+    checkpoints_folder_name: 1207_hrl_study4_elapsed_time_1_200m
+    num_workers: 10   # Smaller than the laptop's number of processes: 16 - should not be the maximum capacity of the processors, otherwise the local memory will overflow.
+    num_steps: 5000   # Don't change this parameter
+    batch_size: 500   # We recommend using a `batch_size` that is a factor of `n_steps * n_envs`
+    ent_coef: 0.03    # Entropy coefficient
+    n_epochs: 10       # Number of epochs
+    clip_range: 0.2   # Clipping range
+    clip_range_vf: None   # Clipping range for the value function
+    learning_rate:   # Learning rate
+      initial_value: 1e-5
+      min_value: 1e-7
+      threshold: 0.8
+    device: 'cuda'     # 'cuda' for default
+    save_freq: 5000000  # Save a checkpoint every 0.5 million steps
+
+  test:
+    num_episodes: 10
+    loaded_model_name: 'rl_model_180000000_steps'
+    continual_logs_name: 'PPO_33'
+
+    grid_search_perturbation:
+      enable: False
+      dwell_steps: [[0.2, 0.5], 0.01]
+      amp_tuning_factor: [[0, 1], 0.01]
+      perturbation_amp_noise_scale: [[0, 0.015], 0.001]
+    grid_search_selection:
+      enable: False
+      init_delta_t: [[1, 5], 0.5]
+      init_sigma_position_memory: [[0.5, 10], 0.5]
+      weight_memory_decay: [[0.1, 1], 0.1]
+      spatial_dist_coeff: [[2, 10], 0.5]
+      layouts: ['L0', 'L50', 'L100']
+      num_episodes: 50
+    grid_search_supervisory_control:
+      enable: False
+      agent_name: 'Norman'   # Shakespeare, Norman, and Olaf
+      layouts: ['L0', 'L50', 'L100']
+      event_update_levels: ['short', 'middle', 'long']
+      num_episodes: 500
+    grid_test_study4:
+      enable: True
+      weight: [[0, 1], 0.01]
+      walk_factor: [[0, 1], 0.1]
+      perception_factor: [[0, 1], 0.1]
+      num_episodes: 1   # No difference across different trials over the same weight value

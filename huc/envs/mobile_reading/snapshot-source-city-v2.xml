@@ -1,0 +1,112 @@
+<?xml version="1.0"?>
+<mujoco>
+    <compiler angle="radian"/>
+    <option collision="predefined" timestep="0.002"/>
+    <visual>
+      <map znear="0.00001"/>
+    </visual>
+    <size njmax="1000" nconmax="400"/>
+    <default class="main">
+        <default class="eye">
+            <position ctrllimited="true" kp="10"/>
+            <joint type="hinge" stiffness="0.0" damping="0.05" armature="0.0" limited="true"/>
+        </default>
+
+        <default class="head-rotations">
+            <position ctrllimited="true" kp="10"/>
+            <joint type="hinge" stiffness="0.0" damping="0.25" armature="0.0" limited="true"/>
+        </default>
+
+        <default class="agent-translations">
+            <position ctrllimited="true" kp="8"/>
+            <joint type="slide" frictionloss="1" stiffness="0.0" damping="8" armature="0.0" limited="true"/>
+        </default>
+
+        <default class="smart-glass-grid">
+            <geom type="box" size="0.045 0.0000001 0.045" rgba="0 0 0 1"/>
+        </default>
+
+        <default class="background-grid">
+            <geom type="box" size="0.008 0.0001 0.008" rgba="0.118 0.89 0.141 0"/>
+        </default>
+    </default>
+    <asset>
+        <texture type="skybox" builtin="gradient" rgb1="1 1 1" rgb2="0.6 0.8 1" width="256" height="256"/>
+        <texture type="cube" name="blue-eye" file="assets/blue_eye_texture_circle.png" gridsize="3 4" gridlayout=".U..LFRB.D.."/>
+        <material name="blue-eye" texture="blue-eye" texuniform="true"/>
+        <mesh name="eye" file="assets/basic_eye_2.stl" scale="0.05 0.05 0.05"/>
+        <mesh name="background" file="assets/fifthave.stl" scale="1 1 1"/>
+        <mesh name="landscape-nus" file="assets/nus_soc_com2.stl" scale="0.025 0.025 0.025"/>
+        <mesh name="ribcage" file="assets/ribcage.stl" scale="0.25 0.25 0.25"/>
+    </asset>
+    <worldbody>
+        <light name="scene_directional_light" directional="true" castshadow="false" cutoff="4" exponent="20"
+               diffuse="1 1 1" specular="0 0 0" pos=".9 .3 2.5"/>
+        <geom name="background" pos="-200 500 0" type="mesh" mesh="background" rgba="0.86 0.86 0.86 0"/>
+        <geom name="ground" size="2 500 0.1" type="plane" rgba="1.0 0.7 0.4 1.0" condim="3"/>
+        <geom name="environmental-signs" pos="-2 7 1.8" euler="0 0 -0.75" size="0.00001 0.5 0.2" type="box" rgba="1 0 0 1.0" condim="3"/>
+
+        <body name="agent" pos="0 0 1.8" euler="0 0 0">
+            <camera name="env" pos="0.25 -0.55 0.15" euler="1.4 0.1 0.02"/>
+            <geom name="ribcage" type="mesh" mesh="ribcage" pos="0 0 -0.15" euler="1.57 1.57 0" rgba="0.99 0.99 0.99 0.5"/>
+            <joint name="agent-joint-y" class="agent-translations" axis="0 1 0" range="-500 500"/>
+
+            <body name="eye" pos="0 0 0" quat="0.7071068 0.7071068 0 0">
+                <geom name="eye" type="sphere" size="0.0125" material="blue-eye" rgba="1 1 1 1" quat="0.6625191 0.0130711 0.7488417 0.0115643"/>
+                <camera name="eye" fovy="90"/>
+                <joint name="eye-joint-x" class="eye" axis="1 0 0" range="-1 1"/>
+                <joint name="eye-joint-y" class="eye" axis="0 1 0" range="-1 1"/>
+                <site name="rangefinder-site" quat="0 0 1 0"/>
+            </body>
+
+            <body name="head" pos="0 0 0">
+                <body name="smart-glass-pane-interline-spacing-0" pos="0 3 0">
+<!--                line gap = (0+1) * word height-->
+                <geom name="grid-25" pos="-0.225 0 0.10" class="smart-glass-grid"/>
+                <geom name="grid-26" pos="-0.075 0 0.10" class="smart-glass-grid"/>
+                <geom name="grid-27" pos="0.075 0 0.10" class="smart-glass-grid"/>
+                <geom name="grid-28" pos="0.225 0 0.10" class="smart-glass-grid"/>
+
+                <geom name="grid-29" pos="-0.225 0 0" class="smart-glass-grid"/>
+                <geom name="grid-30" pos="-0.075 0 0" class="smart-glass-grid"/>
+                <geom name="grid-31" pos="0.075 0 0" class="smart-glass-grid"/>
+                <geom name="grid-32" pos="0.225 0 0" class="smart-glass-grid"/>
+
+                <geom name="grid-33" pos="-0.225 0 -0.10" class="smart-glass-grid"/>
+                <geom name="grid-34" pos="-0.075 0 -0.10" class="smart-glass-grid"/>
+                <geom name="grid-35" pos="0.075 0 -0.10" class="smart-glass-grid"/>
+                <geom name="grid-36" pos="0.225 0 -0.10" class="smart-glass-grid"/>
+            </body>
+
+                <body name="smart-glass-pane-interline-spacing-100" pos="0 3 0">
+                    <geom name="grid-1" pos="-0.225 0 0.36" class="smart-glass-grid"/>
+                    <geom name="grid-2" pos="-0.075 0 0.36" class="smart-glass-grid"/>
+                    <geom name="grid-3" pos="0.075 0 0.36" class="smart-glass-grid"/>
+                    <geom name="grid-4" pos="0.225 0 0.36" class="smart-glass-grid"/>
+
+                    <geom name="grid-5" pos="-0.225 0 0" class="smart-glass-grid"/>
+                    <geom name="grid-6" pos="-0.075 0 0" class="smart-glass-grid"/>
+                    <geom name="grid-7" pos="0.075 0 0" class="smart-glass-grid"/>
+                    <geom name="grid-8" pos="0.225 0 0" class="smart-glass-grid"/>
+
+                    <geom name="grid-9" pos="-0.225 0 -0.36" class="smart-glass-grid"/>
+                    <geom name="grid-10" pos="-0.075 0 -0.36" class="smart-glass-grid"/>
+                    <geom name="grid-11" pos="0.075 0 -0.36" class="smart-glass-grid"/>
+                    <geom name="grid-12" pos="0.225 0 -0.36" class="smart-glass-grid"/>
+                </body>
+                <joint name="head-joint-x" class="head-rotations" axis="1 0 0" range="-1 1"/>
+                <joint name="head-joint-z" class="head-rotations" axis="0 0 1" range="-1 1"/>
+            </body>
+        </body>
+    </worldbody>
+    <actuator>
+        <position name="agent-y-motor" joint="agent-joint-y" class="agent-translations" ctrlrange="-500 500"/>
+        <position name="eye-x-motor" joint="eye-joint-x" class="eye" ctrlrange="-1 1"/>
+        <position name="eye-y-motor" joint="eye-joint-y" class="eye" ctrlrange="-1 1"/>
+        <position name="head-x-motor" joint="head-joint-x" class="head-rotations" ctrlrange="-1 1"/>
+        <position name="head-z-motor" joint="head-joint-z" class="head-rotations" ctrlrange="-1 1"/>
+    </actuator>
+    <sensor>
+        <rangefinder name="rangefinder" site="rangefinder-site"/>
+    </sensor>
+</mujoco>

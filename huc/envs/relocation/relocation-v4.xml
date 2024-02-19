@@ -1,0 +1,380 @@
+<?xml version="1.0"?>
+<mujoco>
+    <compiler angle="radian"/>
+    <option collision="all" timestep="0.002"/>
+    <size njmax="1000" nconmax="400"/>
+    <default class="main">
+        <default class="head">
+            <joint type="slide" stiffness="0.0" damping="0.5" armature="0.0" limited="true" range="0 1"/>
+        </default>
+
+        <default class="eye">
+            <position ctrllimited="true" kp="5"/>
+            <joint type="hinge" stiffness="0.0" damping="0.5" armature="0.0" limited="true"/>
+        </default>
+
+        <default class="smart-glass-grid">
+            <geom type="box" size="0.0030 0.0001 0.0030" rgba="0 0 0 1"/>
+        </default>
+
+        <default class="background-grid">
+            <geom type="box" size="0.008 0.0001 0.008" rgba="1 1 1 0"/>
+        </default>
+    </default>
+    <asset>
+        <texture type="skybox" builtin="gradient" rgb1="1 1 1" rgb2="0.6 0.8 1" width="256" height="256"/>
+        <texture type="cube" name="blue-eye" file="assets/blue_eye_texture_circle.png" gridsize="3 4" gridlayout=".U..LFRB.D.."/>
+        <material name="blue-eye" texture="blue-eye" texuniform="true"/>
+        <mesh name="eye" file="assets/basic_eye_2.stl" scale="0.05 0.05 0.05"/>
+    </asset>
+    <worldbody>
+        <light name="scene_directional_light" directional="true" castshadow="false" cutoff="4" exponent="20"
+               diffuse="1 1 1" specular="0 0 0" pos=".9 .3 2.5"/>
+
+        <camera name="env" pos="0.35 -0.35 0.15" euler="1.4 0.5 0.12"/>
+
+        <body name="head" pos="0 0 0">
+            <body name="eye" pos="0 0 0" quat="0.7071068 0.7071068 0 0">
+                <geom name="eye" type="sphere" size="0.025" material="blue-eye" rgba="1 1 1 1" quat="0.6625191 0.0130711 0.7488417 0.0115643"/>
+                <camera name="eye" fovy="90"/>
+                <joint name="eye-joint-x" class="eye" axis="1 0 0" range="-1.0 1.0"/>
+                <joint name="eye-joint-y" class="eye" axis="0 1 0" range="-1.0 1.0"/>
+                <site name="rangefinder-site" quat="0 0 1 0"/>
+            </body>
+
+            <body name="smart-glass-pane-interline-spacing-100" pos="0 0.16 0">
+<!--                <geom name="grid-1" pos="-0.145 0 0.0536" class="smart-glass-grid"/>-->
+<!--                <geom name="grid-2" pos="-0.135 0 0.0536" class="smart-glass-grid"/>-->
+<!--                <geom name="grid-3" pos="-0.125 0 0.0536" class="smart-glass-grid"/>-->
+<!--                <geom name="grid-4" pos="-0.115 0 0.0536" class="smart-glass-grid"/>-->
+<!--                <geom name="grid-5" pos="-0.105 0 0.0536" class="smart-glass-grid"/>-->
+<!--                <geom name="grid-6" pos="-0.095 0 0.0536" class="smart-glass-grid"/>-->
+<!--                <geom name="grid-7" pos="-0.085 0 0.0536" class="smart-glass-grid"/>-->
+<!--                <geom name="grid-8" pos="-0.075 0 0.0536" class="smart-glass-grid"/>-->
+<!--                <geom name="grid-9" pos="-0.065 0 0.0536" class="smart-glass-grid"/>-->
+<!--                <geom name="grid-10" pos="-0.055 0 0.0536" class="smart-glass-grid"/>-->
+                <geom name="grid-11" pos="-0.045 0 0.0536" class="smart-glass-grid"/>
+                <geom name="grid-12" pos="-0.035 0 0.0536" class="smart-glass-grid"/>
+                <geom name="grid-13" pos="-0.025 0 0.0536" class="smart-glass-grid"/>
+                <geom name="grid-14" pos="-0.015 0 0.0536" class="smart-glass-grid"/>
+                <geom name="grid-15" pos="-0.005 0 0.0536" class="smart-glass-grid"/>
+                <geom name="grid-16" pos="0.005 0 0.0536" class="smart-glass-grid"/>
+                <geom name="grid-17" pos="0.015 0 0.0536" class="smart-glass-grid"/>
+                <geom name="grid-18" pos="0.025 0 0.0536" class="smart-glass-grid"/>
+                <geom name="grid-19" pos="0.035 0 0.0536" class="smart-glass-grid"/>
+                <geom name="grid-20" pos="0.045 0 0.0536" class="smart-glass-grid"/>
+<!--                <geom name="grid-21" pos="0.055 0 0.0536" class="smart-glass-grid"/>-->
+<!--                <geom name="grid-22" pos="0.065 0 0.0536" class="smart-glass-grid"/>-->
+<!--                <geom name="grid-23" pos="0.075 0 0.0536" class="smart-glass-grid"/>-->
+<!--                <geom name="grid-24" pos="0.085 0 0.0536" class="smart-glass-grid"/>-->
+<!--                <geom name="grid-25" pos="0.095 0 0.0536" class="smart-glass-grid"/>-->
+<!--                <geom name="grid-26" pos="0.105 0 0.0536" class="smart-glass-grid"/>-->
+<!--                <geom name="grid-27" pos="0.115 0 0.0536" class="smart-glass-grid"/>-->
+<!--                <geom name="grid-28" pos="0.125 0 0.0536" class="smart-glass-grid"/>-->
+<!--                <geom name="grid-29" pos="0.135 0 0.0536" class="smart-glass-grid"/>-->
+<!--                <geom name="grid-30" pos="0.145 0 0.0536" class="smart-glass-grid"/>-->
+
+<!--                <geom name="grid-31" pos="-0.145 0 0.0268" class="smart-glass-grid"/>-->
+<!--                <geom name="grid-32" pos="-0.135 0 0.0268" class="smart-glass-grid"/>-->
+<!--                <geom name="grid-33" pos="-0.125 0 0.0268" class="smart-glass-grid"/>-->
+<!--                <geom name="grid-34" pos="-0.115 0 0.0268" class="smart-glass-grid"/>-->
+<!--                <geom name="grid-35" pos="-0.105 0 0.0268" class="smart-glass-grid"/>-->
+<!--                <geom name="grid-36" pos="-0.095 0 0.0268" class="smart-glass-grid"/>-->
+<!--                <geom name="grid-37" pos="-0.085 0 0.0268" class="smart-glass-grid"/>-->
+<!--                <geom name="grid-38" pos="-0.075 0 0.0268" class="smart-glass-grid"/>-->
+<!--                <geom name="grid-39" pos="-0.065 0 0.0268" class="smart-glass-grid"/>-->
+<!--                <geom name="grid-40" pos="-0.055 0 0.0268" class="smart-glass-grid"/>-->
+                <geom name="grid-41" pos="-0.045 0 0.0268" class="smart-glass-grid"/>
+                <geom name="grid-42" pos="-0.035 0 0.0268" class="smart-glass-grid"/>
+                <geom name="grid-43" pos="-0.025 0 0.0268" class="smart-glass-grid"/>
+                <geom name="grid-44" pos="-0.015 0 0.0268" class="smart-glass-grid"/>
+                <geom name="grid-45" pos="-0.005 0 0.0268" class="smart-glass-grid"/>
+                <geom name="grid-46" pos="0.005 0 0.0268" class="smart-glass-grid"/>
+                <geom name="grid-47" pos="0.015 0 0.0268" class="smart-glass-grid"/>
+                <geom name="grid-48" pos="0.025 0 0.0268" class="smart-glass-grid"/>
+                <geom name="grid-49" pos="0.035 0 0.0268" class="smart-glass-grid"/>
+                <geom name="grid-50" pos="0.045 0 0.0268" class="smart-glass-grid"/>
+<!--                <geom name="grid-51" pos="0.055 0 0.0268" class="smart-glass-grid"/>-->
+<!--                <geom name="grid-52" pos="0.065 0 0.0268" class="smart-glass-grid"/>-->
+<!--                <geom name="grid-53" pos="0.075 0 0.0268" class="smart-glass-grid"/>-->
+<!--                <geom name="grid-54" pos="0.085 0 0.0268" class="smart-glass-grid"/>-->
+<!--                <geom name="grid-55" pos="0.095 0 0.0268" class="smart-glass-grid"/>-->
+<!--                <geom name="grid-56" pos="0.105 0 0.0268" class="smart-glass-grid"/>-->
+<!--                <geom name="grid-57" pos="0.115 0 0.0268" class="smart-glass-grid"/>-->
+<!--                <geom name="grid-58" pos="0.125 0 0.0268" class="smart-glass-grid"/>-->
+<!--                <geom name="grid-59" pos="0.135 0 0.0268" class="smart-glass-grid"/>-->
+<!--                <geom name="grid-60" pos="0.145 0 0.0268" class="smart-glass-grid"/>-->
+
+<!--                <geom name="grid-61" pos="-0.145 0 0" class="smart-glass-grid"/>-->
+<!--                <geom name="grid-62" pos="-0.135 0 0" class="smart-glass-grid"/>-->
+<!--                <geom name="grid-63" pos="-0.125 0 0" class="smart-glass-grid"/>-->
+<!--                <geom name="grid-64" pos="-0.115 0 0" class="smart-glass-grid"/>-->
+<!--                <geom name="grid-65" pos="-0.105 0 0" class="smart-glass-grid"/>-->
+<!--                <geom name="grid-66" pos="-0.095 0 0" class="smart-glass-grid"/>-->
+<!--                <geom name="grid-67" pos="-0.085 0 0" class="smart-glass-grid"/>-->
+<!--                <geom name="grid-68" pos="-0.075 0 0" class="smart-glass-grid"/>-->
+<!--                <geom name="grid-69" pos="-0.065 0 0" class="smart-glass-grid"/>-->
+<!--                <geom name="grid-70" pos="-0.055 0 0" class="smart-glass-grid"/>-->
+                <geom name="grid-71" pos="-0.045 0 0" class="smart-glass-grid"/>
+                <geom name="grid-72" pos="-0.035 0 0" class="smart-glass-grid"/>
+                <geom name="grid-73" pos="-0.025 0 0" class="smart-glass-grid"/>
+                <geom name="grid-74" pos="-0.015 0 0" class="smart-glass-grid"/>
+                <geom name="grid-75" pos="-0.005 0 0" class="smart-glass-grid"/>
+                <geom name="grid-76" pos="0.005 0 0" class="smart-glass-grid"/>
+                <geom name="grid-77" pos="0.015 0 0" class="smart-glass-grid"/>
+                <geom name="grid-78" pos="0.025 0 0" class="smart-glass-grid"/>
+                <geom name="grid-79" pos="0.035 0 0" class="smart-glass-grid"/>
+                <geom name="grid-80" pos="0.045 0 0" class="smart-glass-grid"/>
+<!--                <geom name="grid-81" pos="0.055 0 0" class="smart-glass-grid"/>-->
+<!--                <geom name="grid-82" pos="0.065 0 0" class="smart-glass-grid"/>-->
+<!--                <geom name="grid-83" pos="0.075 0 0" class="smart-glass-grid"/>-->
+<!--                <geom name="grid-84" pos="0.085 0 0" class="smart-glass-grid"/>-->
+<!--                <geom name="grid-85" pos="0.095 0 0" class="smart-glass-grid"/>-->
+<!--                <geom name="grid-86" pos="0.105 0 0" class="smart-glass-grid"/>-->
+<!--                <geom name="grid-87" pos="0.115 0 0" class="smart-glass-grid"/>-->
+<!--                <geom name="grid-88" pos="0.125 0 0" class="smart-glass-grid"/>-->
+<!--                <geom name="grid-89" pos="0.135 0 0" class="smart-glass-grid"/>-->
+<!--                <geom name="grid-90" pos="0.145 0 0" class="smart-glass-grid"/>-->
+
+<!--                <geom name="grid-91" pos="-0.145 0 -0.0268" class="smart-glass-grid"/>-->
+<!--                <geom name="grid-92" pos="-0.135 0 -0.0268" class="smart-glass-grid"/>-->
+<!--                <geom name="grid-93" pos="-0.125 0 -0.0268" class="smart-glass-grid"/>-->
+<!--                <geom name="grid-94" pos="-0.115 0 -0.0268" class="smart-glass-grid"/>-->
+<!--                <geom name="grid-95" pos="-0.105 0 -0.0268" class="smart-glass-grid"/>-->
+<!--                <geom name="grid-96" pos="-0.095 0 -0.0268" class="smart-glass-grid"/>-->
+<!--                <geom name="grid-97" pos="-0.085 0 -0.0268" class="smart-glass-grid"/>-->
+<!--                <geom name="grid-98" pos="-0.075 0 -0.0268" class="smart-glass-grid"/>-->
+<!--                <geom name="grid-99" pos="-0.065 0 -0.0268" class="smart-glass-grid"/>-->
+<!--                <geom name="grid-100" pos="-0.055 0 -0.0268" class="smart-glass-grid"/>-->
+                <geom name="grid-101" pos="-0.045 0 -0.0268" class="smart-glass-grid"/>
+                <geom name="grid-102" pos="-0.035 0 -0.0268" class="smart-glass-grid"/>
+                <geom name="grid-103" pos="-0.025 0 -0.0268" class="smart-glass-grid"/>
+                <geom name="grid-104" pos="-0.015 0 -0.0268" class="smart-glass-grid"/>
+                <geom name="grid-105" pos="-0.005 0 -0.0268" class="smart-glass-grid"/>
+                <geom name="grid-106" pos="0.005 0 -0.0268" class="smart-glass-grid"/>
+                <geom name="grid-107" pos="0.015 0 -0.0268" class="smart-glass-grid"/>
+                <geom name="grid-108" pos="0.025 0 -0.0268" class="smart-glass-grid"/>
+                <geom name="grid-109" pos="0.035 0 -0.0268" class="smart-glass-grid"/>
+                <geom name="grid-110" pos="0.045 0 -0.0268" class="smart-glass-grid"/>
+<!--                <geom name="grid-111" pos="0.055 0 -0.0268" class="smart-glass-grid"/>-->
+<!--                <geom name="grid-112" pos="0.065 0 -0.0268" class="smart-glass-grid"/>-->
+<!--                <geom name="grid-113" pos="0.075 0 -0.0268" class="smart-glass-grid"/>-->
+<!--                <geom name="grid-114" pos="0.085 0 -0.0268" class="smart-glass-grid"/>-->
+<!--                <geom name="grid-115" pos="0.095 0 -0.0268" class="smart-glass-grid"/>-->
+<!--                <geom name="grid-116" pos="0.105 0 -0.0268" class="smart-glass-grid"/>-->
+<!--                <geom name="grid-117" pos="0.115 0 -0.0268" class="smart-glass-grid"/>-->
+<!--                <geom name="grid-118" pos="0.125 0 -0.0268" class="smart-glass-grid"/>-->
+<!--                <geom name="grid-119" pos="0.135 0 -0.0268" class="smart-glass-grid"/>-->
+<!--                <geom name="grid-120" pos="0.145 0 -0.0268" class="smart-glass-grid"/>-->
+
+<!--                <geom name="grid-121" pos="-0.145 0 -0.0536" class="smart-glass-grid"/>-->
+<!--                <geom name="grid-122" pos="-0.135 0 -0.0536" class="smart-glass-grid"/>-->
+<!--                <geom name="grid-123" pos="-0.125 0 -0.0536" class="smart-glass-grid"/>-->
+<!--                <geom name="grid-124" pos="-0.115 0 -0.0536" class="smart-glass-grid"/>-->
+<!--                <geom name="grid-125" pos="-0.105 0 -0.0536" class="smart-glass-grid"/>-->
+<!--                <geom name="grid-126" pos="-0.095 0 -0.0536" class="smart-glass-grid"/>-->
+<!--                <geom name="grid-127" pos="-0.085 0 -0.0536" class="smart-glass-grid"/>-->
+<!--                <geom name="grid-128" pos="-0.075 0 -0.0536" class="smart-glass-grid"/>-->
+<!--                <geom name="grid-129" pos="-0.065 0 -0.0536" class="smart-glass-grid"/>-->
+<!--                <geom name="grid-130" pos="-0.055 0 -0.0536" class="smart-glass-grid"/>-->
+
+<!--                <geom name="grid-131" pos="-0.045 0 -0.0536" class="smart-glass-grid"/>-->
+<!--                <geom name="grid-132" pos="-0.035 0 -0.0536" class="smart-glass-grid"/>-->
+<!--                <geom name="grid-133" pos="-0.025 0 -0.0536" class="smart-glass-grid"/>-->
+<!--                <geom name="grid-134" pos="-0.015 0 -0.0536" class="smart-glass-grid"/>-->
+<!--                <geom name="grid-135" pos="-0.005 0 -0.0536" class="smart-glass-grid"/>-->
+<!--                <geom name="grid-136" pos="0.005 0 -0.0536" class="smart-glass-grid"/>-->
+<!--                <geom name="grid-137" pos="0.015 0 -0.0536" class="smart-glass-grid"/>-->
+<!--                <geom name="grid-138" pos="0.025 0 -0.0536" class="smart-glass-grid"/>-->
+<!--                <geom name="grid-139" pos="0.035 0 -0.0536" class="smart-glass-grid"/>-->
+<!--                <geom name="grid-140" pos="0.045 0 -0.0536" class="smart-glass-grid"/>-->
+
+<!--                <geom name="grid-141" pos="0.055 0 -0.0536" class="smart-glass-grid"/>-->
+<!--                <geom name="grid-142" pos="0.065 0 -0.0536" class="smart-glass-grid"/>-->
+<!--                <geom name="grid-143" pos="0.075 0 -0.0536" class="smart-glass-grid"/>-->
+<!--                <geom name="grid-144" pos="0.085 0 -0.0536" class="smart-glass-grid"/>-->
+<!--                <geom name="grid-145" pos="0.095 0 -0.0536" class="smart-glass-grid"/>-->
+<!--                <geom name="grid-146" pos="0.105 0 -0.0536" class="smart-glass-grid"/>-->
+<!--                <geom name="grid-147" pos="0.115 0 -0.0536" class="smart-glass-grid"/>-->
+<!--                <geom name="grid-148" pos="0.125 0 -0.0536" class="smart-glass-grid"/>-->
+<!--                <geom name="grid-149" pos="0.135 0 -0.0536" class="smart-glass-grid"/>-->
+<!--                <geom name="grid-150" pos="0.145 0 -0.0536" class="smart-glass-grid"/>-->
+            </body>
+
+            <body name="smart-glass-pane-bottom-center" pos="0 0.16 0.0076">
+<!--                <geom name="grid-151" pos="-0.07 0 0.0" class="smart-glass-grid"/>-->
+<!--                <geom name="grid-152" pos="-0.06 0 0.0" class="smart-glass-grid"/>-->
+<!--                <geom name="grid-153" pos="-0.05 0 0.0" class="smart-glass-grid"/>-->
+<!--                <geom name="grid-154" pos="-0.04 0 0.0" class="smart-glass-grid"/>-->
+<!--                <geom name="grid-155" pos="-0.03 0 0.0" class="smart-glass-grid"/>-->
+                <geom name="grid-156" pos="-0.02 0 0.0" class="smart-glass-grid"/>
+                <geom name="grid-157" pos="-0.01 0 0.0" class="smart-glass-grid"/>
+                <geom name="grid-158" pos="0.0 0 0.0" class="smart-glass-grid"/>
+                <geom name="grid-159" pos="0.01 0 0.0" class="smart-glass-grid"/>
+                <geom name="grid-160" pos="0.02 0 0.0" class="smart-glass-grid"/>
+<!--                <geom name="grid-161" pos="0.03 0 0.0" class="smart-glass-grid"/>-->
+<!--                <geom name="grid-162" pos="0.04 0 0.0" class="smart-glass-grid"/>-->
+<!--                <geom name="grid-163" pos="0.05 0 0.0" class="smart-glass-grid"/>-->
+<!--                <geom name="grid-164" pos="0.06 0 0.0" class="smart-glass-grid"/>-->
+<!--                <geom name="grid-165" pos="0.07 0 0.0" class="smart-glass-grid"/>-->
+
+<!--                <geom name="grid-166" pos="-0.07 0 -0.0068" class="smart-glass-grid"/>-->
+<!--                <geom name="grid-167" pos="-0.06 0 -0.0068" class="smart-glass-grid"/>-->
+<!--                <geom name="grid-168" pos="-0.05 0 -0.0068" class="smart-glass-grid"/>-->
+<!--                <geom name="grid-169" pos="-0.04 0 -0.0068" class="smart-glass-grid"/>-->
+<!--                <geom name="grid-170" pos="-0.03 0 -0.0068" class="smart-glass-grid"/>-->
+                <geom name="grid-171" pos="-0.02 0 -0.0068" class="smart-glass-grid"/>
+                <geom name="grid-172" pos="-0.01 0 -0.0068" class="smart-glass-grid"/>
+                <geom name="grid-173" pos="0.0 0 -0.0068" class="smart-glass-grid"/>
+                <geom name="grid-174" pos="0.01 0 -0.0068" class="smart-glass-grid"/>
+                <geom name="grid-175" pos="0.02 0 -0.0068" class="smart-glass-grid"/>
+<!--                <geom name="grid-176" pos="0.03 0 -0.0068" class="smart-glass-grid"/>-->
+<!--                <geom name="grid-177" pos="0.04 0 -0.0068" class="smart-glass-grid"/>-->
+<!--                <geom name="grid-178" pos="0.05 0 -0.0068" class="smart-glass-grid"/>-->
+<!--                <geom name="grid-179" pos="0.06 0 -0.0068" class="smart-glass-grid"/>-->
+<!--                <geom name="grid-180" pos="0.07 0 -0.0068" class="smart-glass-grid"/>-->
+
+<!--                <geom name="grid-181" pos="-0.07 0 -0.0136" class="smart-glass-grid"/>-->
+<!--                <geom name="grid-182" pos="-0.06 0 -0.0136" class="smart-glass-grid"/>-->
+<!--                <geom name="grid-183" pos="-0.05 0 -0.0136" class="smart-glass-grid"/>-->
+<!--                <geom name="grid-184" pos="-0.04 0 -0.0136" class="smart-glass-grid"/>-->
+<!--                <geom name="grid-185" pos="-0.03 0 -0.0136" class="smart-glass-grid"/>-->
+                <geom name="grid-186" pos="-0.02 0 -0.0136" class="smart-glass-grid"/>
+                <geom name="grid-187" pos="-0.01 0 -0.0136" class="smart-glass-grid"/>
+                <geom name="grid-188" pos="0.0 0 -0.0136" class="smart-glass-grid"/>
+                <geom name="grid-189" pos="0.01 0 -0.0136" class="smart-glass-grid"/>
+                <geom name="grid-190" pos="0.02 0 -0.0136" class="smart-glass-grid"/>
+<!--                <geom name="grid-191" pos="0.03 0 -0.0136" class="smart-glass-grid"/>-->
+<!--                <geom name="grid-192" pos="0.04 0 -0.0136" class="smart-glass-grid"/>-->
+<!--                <geom name="grid-193" pos="0.05 0 -0.0136" class="smart-glass-grid"/>-->
+<!--                <geom name="grid-194" pos="0.06 0 -0.0136" class="smart-glass-grid"/>-->
+<!--                <geom name="grid-195" pos="0.07 0 -0.0136" class="smart-glass-grid"/>-->
+
+<!--                <geom name="grid-196" pos="-0.07 0 -0.0204" class="smart-glass-grid"/>-->
+<!--                <geom name="grid-197" pos="-0.06 0 -0.0204" class="smart-glass-grid"/>-->
+<!--                <geom name="grid-198" pos="-0.05 0 -0.0204" class="smart-glass-grid"/>-->
+<!--                <geom name="grid-199" pos="-0.04 0 -0.0204" class="smart-glass-grid"/>-->
+<!--                <geom name="grid-200" pos="-0.03 0 -0.0204" class="smart-glass-grid"/>-->
+                <geom name="grid-201" pos="-0.02 0 -0.0204" class="smart-glass-grid"/>
+                <geom name="grid-202" pos="-0.01 0 -0.0204" class="smart-glass-grid"/>
+                <geom name="grid-203" pos="0.0 0 -0.0204" class="smart-glass-grid"/>
+                <geom name="grid-204" pos="0.01 0 -0.0204" class="smart-glass-grid"/>
+                <geom name="grid-205" pos="0.02 0 -0.0204" class="smart-glass-grid"/>
+<!--                <geom name="grid-206" pos="0.03 0 -0.0204" class="smart-glass-grid"/>-->
+<!--                <geom name="grid-207" pos="0.04 0 -0.0204" class="smart-glass-grid"/>-->
+<!--                <geom name="grid-208" pos="0.05 0 -0.0204" class="smart-glass-grid"/>-->
+<!--                <geom name="grid-209" pos="0.06 0 -0.0204" class="smart-glass-grid"/>-->
+<!--                <geom name="grid-210" pos="0.07 0 -0.0204" class="smart-glass-grid"/>-->
+
+<!--                <geom name="grid-211" pos="-0.07 0 -0.0272" class="smart-glass-grid"/>-->
+<!--                <geom name="grid-212" pos="-0.06 0 -0.0272" class="smart-glass-grid"/>-->
+<!--                <geom name="grid-213" pos="-0.05 0 -0.0272" class="smart-glass-grid"/>-->
+<!--                <geom name="grid-214" pos="-0.04 0 -0.0272" class="smart-glass-grid"/>-->
+<!--                <geom name="grid-215" pos="-0.03 0 -0.0272" class="smart-glass-grid"/>-->
+                <geom name="grid-216" pos="-0.02 0 -0.0272" class="smart-glass-grid"/>
+                <geom name="grid-217" pos="-0.01 0 -0.0272" class="smart-glass-grid"/>
+                <geom name="grid-218" pos="0.0 0 -0.0272" class="smart-glass-grid"/>
+                <geom name="grid-219" pos="0.01 0 -0.0272" class="smart-glass-grid"/>
+                <geom name="grid-220" pos="0.02 0 -0.0272" class="smart-glass-grid"/>
+<!--                <geom name="grid-221" pos="0.03 0 -0.0272" class="smart-glass-grid"/>-->
+<!--                <geom name="grid-222" pos="0.04 0 -0.0272" class="smart-glass-grid"/>-->
+<!--                <geom name="grid-223" pos="0.05 0 -0.0272" class="smart-glass-grid"/>-->
+<!--                <geom name="grid-224" pos="0.06 0 -0.0272" class="smart-glass-grid"/>-->
+<!--                <geom name="grid-225" pos="0.07 0 -0.0272" class="smart-glass-grid"/>-->
+
+<!--                <geom name="grid-226" pos="-0.07 0 -0.034" class="smart-glass-grid"/>-->
+<!--                <geom name="grid-227" pos="-0.06 0 -0.034" class="smart-glass-grid"/>-->
+<!--                <geom name="grid-228" pos="-0.05 0 -0.034" class="smart-glass-grid"/>-->
+<!--                <geom name="grid-229" pos="-0.04 0 -0.034" class="smart-glass-grid"/>-->
+<!--                <geom name="grid-230" pos="-0.03 0 -0.034" class="smart-glass-grid"/>-->
+                <geom name="grid-231" pos="-0.02 0 -0.034" class="smart-glass-grid"/>
+                <geom name="grid-232" pos="-0.01 0 -0.034" class="smart-glass-grid"/>
+                <geom name="grid-233" pos="0.0 0 -0.034" class="smart-glass-grid"/>
+                <geom name="grid-234" pos="0.01 0 -0.034" class="smart-glass-grid"/>
+                <geom name="grid-235" pos="0.02 0 -0.034" class="smart-glass-grid"/>
+<!--                <geom name="grid-236" pos="0.03 0 -0.034" class="smart-glass-grid"/>-->
+<!--                <geom name="grid-237" pos="0.04 0 -0.034" class="smart-glass-grid"/>-->
+<!--                <geom name="grid-238" pos="0.05 0 -0.034" class="smart-glass-grid"/>-->
+<!--                <geom name="grid-239" pos="0.06 0 -0.034" class="smart-glass-grid"/>-->
+<!--                <geom name="grid-240" pos="0.07 0 -0.034" class="smart-glass-grid"/>-->
+
+<!--                <geom name="grid-241" pos="-0.07 0 -0.0408" class="smart-glass-grid"/>-->
+<!--                <geom name="grid-242" pos="-0.06 0 -0.0408" class="smart-glass-grid"/>-->
+<!--                <geom name="grid-243" pos="-0.05 0 -0.0408" class="smart-glass-grid"/>-->
+<!--                <geom name="grid-244" pos="-0.04 0 -0.0408" class="smart-glass-grid"/>-->
+<!--                <geom name="grid-245" pos="-0.03 0 -0.0408" class="smart-glass-grid"/>-->
+                <geom name="grid-246" pos="-0.02 0 -0.0408" class="smart-glass-grid"/>
+                <geom name="grid-247" pos="-0.01 0 -0.0408" class="smart-glass-grid"/>
+                <geom name="grid-248" pos="0.0 0 -0.0408" class="smart-glass-grid"/>
+                <geom name="grid-249" pos="0.01 0 -0.0408" class="smart-glass-grid"/>
+                <geom name="grid-250" pos="0.02 0 -0.0408" class="smart-glass-grid"/>
+<!--                <geom name="grid-251" pos="0.03 0 -0.0408" class="smart-glass-grid"/>-->
+<!--                <geom name="grid-252" pos="0.04 0 -0.0408" class="smart-glass-grid"/>-->
+<!--                <geom name="grid-253" pos="0.05 0 -0.0408" class="smart-glass-grid"/>-->
+<!--                <geom name="grid-254" pos="0.06 0 -0.0408" class="smart-glass-grid"/>-->
+<!--                <geom name="grid-255" pos="0.07 0 -0.0408" class="smart-glass-grid"/>-->
+
+<!--                <geom name="grid-256" pos="-0.07 0 -0.0476" class="smart-glass-grid"/>-->
+<!--                <geom name="grid-257" pos="-0.06 0 -0.0476" class="smart-glass-grid"/>-->
+<!--                <geom name="grid-258" pos="-0.05 0 -0.0476" class="smart-glass-grid"/>-->
+<!--                <geom name="grid-259" pos="-0.04 0 -0.0476" class="smart-glass-grid"/>-->
+<!--                <geom name="grid-260" pos="-0.03 0 -0.0476" class="smart-glass-grid"/>-->
+                <geom name="grid-261" pos="-0.02 0 -0.0476" class="smart-glass-grid"/>
+                <geom name="grid-262" pos="-0.01 0 -0.0476" class="smart-glass-grid"/>
+                <geom name="grid-263" pos="0.0 0 -0.0476" class="smart-glass-grid"/>
+                <geom name="grid-264" pos="0.01 0 -0.0476" class="smart-glass-grid"/>
+                <geom name="grid-265" pos="0.02 0 -0.0476" class="smart-glass-grid"/>
+<!--                <geom name="grid-266" pos="0.03 0 -0.0476" class="smart-glass-grid"/>-->
+<!--                <geom name="grid-267" pos="0.04 0 -0.0476" class="smart-glass-grid"/>-->
+<!--                <geom name="grid-268" pos="0.05 0 -0.0476" class="smart-glass-grid"/>-->
+<!--                <geom name="grid-269" pos="0.06 0 -0.0476" class="smart-glass-grid"/>-->
+<!--                <geom name="grid-270" pos="0.07 0 -0.0476" class="smart-glass-grid"/>-->
+
+<!--                <geom name="grid-271" pos="-0.07 0 -0.0544" class="smart-glass-grid"/>-->
+<!--                <geom name="grid-272" pos="-0.06 0 -0.0544" class="smart-glass-grid"/>-->
+<!--                <geom name="grid-273" pos="-0.05 0 -0.0544" class="smart-glass-grid"/>-->
+<!--                <geom name="grid-274" pos="-0.04 0 -0.0544" class="smart-glass-grid"/>-->
+<!--                <geom name="grid-275" pos="-0.03 0 -0.0544" class="smart-glass-grid"/>-->
+<!--                <geom name="grid-276" pos="-0.02 0 -0.0544" class="smart-glass-grid"/>-->
+<!--                <geom name="grid-277" pos="-0.01 0 -0.0544" class="smart-glass-grid"/>-->
+<!--                <geom name="grid-278" pos="0.0 0 -0.0544" class="smart-glass-grid"/>-->
+<!--                <geom name="grid-279" pos="0.01 0 -0.0544" class="smart-glass-grid"/>-->
+<!--                <geom name="grid-280" pos="0.02 0 -0.0544" class="smart-glass-grid"/>-->
+<!--                <geom name="grid-281" pos="0.03 0 -0.0544" class="smart-glass-grid"/>-->
+<!--                <geom name="grid-282" pos="0.04 0 -0.0544" class="smart-glass-grid"/>-->
+<!--                <geom name="grid-283" pos="0.05 0 -0.0544" class="smart-glass-grid"/>-->
+<!--                <geom name="grid-284" pos="0.06 0 -0.0544" class="smart-glass-grid"/>-->
+<!--                <geom name="grid-285" pos="0.07 0 -0.0544" class="smart-glass-grid"/>-->
+
+<!--                <geom name="grid-286" pos="-0.07 0 -0.0612" class="smart-glass-grid"/>-->
+<!--                <geom name="grid-287" pos="-0.06 0 -0.0612" class="smart-glass-grid"/>-->
+<!--                <geom name="grid-288" pos="-0.05 0 -0.0612" class="smart-glass-grid"/>-->
+<!--                <geom name="grid-289" pos="-0.04 0 -0.0612" class="smart-glass-grid"/>-->
+<!--                <geom name="grid-290" pos="-0.03 0 -0.0612" class="smart-glass-grid"/>-->
+<!--                <geom name="grid-291" pos="-0.02 0 -0.0612" class="smart-glass-grid"/>-->
+<!--                <geom name="grid-292" pos="-0.01 0 -0.0612" class="smart-glass-grid"/>-->
+<!--                <geom name="grid-293" pos="0.0 0 -0.0612" class="smart-glass-grid"/>-->
+<!--                <geom name="grid-294" pos="0.01 0 -0.0612" class="smart-glass-grid"/>-->
+<!--                <geom name="grid-295" pos="0.02 0 -0.0612" class="smart-glass-grid"/>-->
+<!--                <geom name="grid-296" pos="0.03 0 -0.0612" class="smart-glass-grid"/>-->
+<!--                <geom name="grid-297" pos="0.04 0 -0.0612" class="smart-glass-grid"/>-->
+<!--                <geom name="grid-298" pos="0.05 0 -0.0612" class="smart-glass-grid"/>-->
+<!--                <geom name="grid-299" pos="0.06 0 -0.0612" class="smart-glass-grid"/>-->
+<!--                <geom name="grid-300" pos="0.07 0 -0.0612" class="smart-glass-grid"/>-->
+            </body>
+
+        </body>
+
+        <body name="background-pane" pos="0 0.12 0">
+            <geom name="grid-bgp" pos="-0 0 0" class="background-grid"/>
+        </body>
+
+    </worldbody>
+    <actuator>
+        <position name="eye-x-motor" joint="eye-joint-x" class="eye" ctrlrange="-1.0 1.0"/>
+        <position name="eye-y-motor" joint="eye-joint-y" class="eye" ctrlrange="-1.0 1.0"/>
+    </actuator>
+    <sensor>
+        <rangefinder name="rangefinder" site="rangefinder-site"/>
+    </sensor>
+</mujoco>

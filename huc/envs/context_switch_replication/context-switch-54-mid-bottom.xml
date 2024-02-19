@@ -1,0 +1,113 @@
+<?xml version="1.0"?>
+<mujoco>
+    <compiler angle="radian"/>
+    <option collision="all" timestep="0.002"/>
+    <size njmax="1000" nconmax="400"/>
+    <default class="main">
+        <default class="eye">
+            <position ctrllimited="true" kp="5"/>
+            <joint type="hinge" stiffness="0.0" damping="0.5" armature="0.0" limited="true"/>
+        </default>
+        <default class="smart-glass-grid">
+            <geom type="box" size="0.0030 0.0001 0.0030" rgba="0 0 0 1"/>
+        </default>
+        <default class="background-grid">
+            <geom type="box" size="0.01 0.0001 0.01" rgba="0.5 0.5 0.5 0.5"/>
+        </default>
+    </default>
+    <asset>
+        <texture type="skybox" builtin="gradient" rgb1="1 1 1" rgb2="0.6 0.8 1" width="256" height="256"/>
+        <texture type="cube" name="blue-eye" file="assets/blue_eye_texture_circle.png" gridsize="3 4" gridlayout=".U..LFRB.D.."/>
+        <material name="blue-eye" texture="blue-eye" texuniform="true"/>
+        <mesh name="eye" file="assets/basic_eye_2.stl" scale="0.05 0.05 0.05"/>
+    </asset>
+    <worldbody>
+        <light name="scene_directional_light" directional="true" castshadow="false" cutoff="4" exponent="20"
+               diffuse="1 1 1" specular="0 0 0" pos=".9 .3 2.5"/>
+
+        <camera name="env" pos="-0.1 -0.05 0.05" euler="1.0 -0.85 -0.37"/>
+
+        <body name="eye" pos="0 0 0" quat="0.7071068 0.7071068 0 0">
+            <geom name="eye" type="sphere" size="0.025" material="blue-eye" rgba="1 1 1 1" quat="0.6625191 0.0130711 0.7488417 0.0115643"/>
+            <camera name="eye" fovy="90"/>
+            <joint name="eye-joint-x" class="eye" axis="1 0 0" range="-1.6 1.6"/>
+            <joint name="eye-joint-y" class="eye" axis="0 1 0" range="-1.6 1.6"/>
+            <site name="rangefinder-site" quat="0 0 1 0"/>
+        </body>
+
+        <body name="smart-glass-pane" pos="0 0.10 -0.02">
+<!--            <body name="text-line1" pos="0 0 0.0268">-->
+            <geom name="grid-0" pos="-0.045 0 0.0136" class="smart-glass-grid"/>
+            <geom name="grid-1" pos="-0.035 0 0.0136" class="smart-glass-grid"/>
+            <geom name="grid-2" pos="-0.025 0 0.0136" class="smart-glass-grid"/>
+            <geom name="grid-3" pos="-0.015 0 0.0136" class="smart-glass-grid"/>
+            <geom name="grid-4" pos="-0.005 0 0.0136" class="smart-glass-grid"/>
+            <geom name="grid-5" pos="0.005 0 0.0136" class="smart-glass-grid"/>
+            <geom name="grid-6" pos="0.015 0 0.0136" class="smart-glass-grid"/>
+            <geom name="grid-7" pos="0.025 0 0.0136" class="smart-glass-grid"/>
+            <geom name="grid-8" pos="0.035 0 0.0136" class="smart-glass-grid"/>
+            <geom name="grid-9" pos="0.045 0 0.0136" class="smart-glass-grid"/>
+
+            <geom name="grid-10" pos="-0.045 0 0.0068" class="smart-glass-grid"/>
+            <geom name="grid-11" pos="-0.035 0 0.0068" class="smart-glass-grid"/>
+            <geom name="grid-12" pos="-0.025 0 0.0068" class="smart-glass-grid"/>
+            <geom name="grid-13" pos="-0.015 0 0.0068" class="smart-glass-grid"/>
+            <geom name="grid-14" pos="-0.005 0 0.0068" class="smart-glass-grid"/>
+            <geom name="grid-15" pos="0.005 0 0.0068" class="smart-glass-grid"/>
+            <geom name="grid-16" pos="0.015 0 0.0068" class="smart-glass-grid"/>
+            <geom name="grid-17" pos="0.025 0 0.0068" class="smart-glass-grid"/>
+            <geom name="grid-18" pos="0.035 0 0.0068" class="smart-glass-grid"/>
+            <geom name="grid-19" pos="0.045 0 0.0068" class="smart-glass-grid"/>
+<!--            </body>-->
+
+<!--            <body name="text-line2" pos="0 0 0">-->
+            <geom name="grid-20" pos="-0.045 0 0" class="smart-glass-grid"/>
+            <geom name="grid-21" pos="-0.035 0 0" class="smart-glass-grid"/>
+            <geom name="grid-22" pos="-0.025 0 0" class="smart-glass-grid"/>
+            <geom name="grid-23" pos="-0.015 0 0" class="smart-glass-grid"/>
+            <geom name="grid-24" pos="-0.005 0 0" class="smart-glass-grid"/>
+            <geom name="grid-25" pos="0.005 0 0" class="smart-glass-grid"/>
+            <geom name="grid-26" pos="0.015 0 0" class="smart-glass-grid"/>
+            <geom name="grid-27" pos="0.025 0 0" class="smart-glass-grid"/>
+            <geom name="grid-28" pos="0.035 0 0" class="smart-glass-grid"/>
+            <geom name="grid-29" pos="0.045 0 0" class="smart-glass-grid"/>
+<!--            </body>-->
+
+<!--            <body name="text-line3" pos="0 0 -0.0268">-->
+            <geom name="grid-30" pos="-0.045 0 -0.0068" class="smart-glass-grid"/>
+            <geom name="grid-31" pos="-0.035 0 -0.0068" class="smart-glass-grid"/>
+            <geom name="grid-32" pos="-0.025 0 -0.0068" class="smart-glass-grid"/>
+            <geom name="grid-33" pos="-0.015 0 -0.0068" class="smart-glass-grid"/>
+            <geom name="grid-34" pos="-0.005 0 -0.0068" class="smart-glass-grid"/>
+            <geom name="grid-35" pos="0.005 0 -0.0068" class="smart-glass-grid"/>
+            <geom name="grid-36" pos="0.015 0 -0.0068" class="smart-glass-grid"/>
+            <geom name="grid-37" pos="0.025 0 -0.0068" class="smart-glass-grid"/>
+            <geom name="grid-38" pos="0.035 0 -0.0068" class="smart-glass-grid"/>
+            <geom name="grid-39" pos="0.045 0 -0.0068" class="smart-glass-grid"/>
+<!--            </body>-->
+
+            <geom name="grid-40" pos="-0.045 0 -0.0136" class="smart-glass-grid"/>
+            <geom name="grid-41" pos="-0.035 0 -0.0136" class="smart-glass-grid"/>
+            <geom name="grid-42" pos="-0.025 0 -0.0136" class="smart-glass-grid"/>
+            <geom name="grid-43" pos="-0.015 0 -0.0136" class="smart-glass-grid"/>
+            <geom name="grid-44" pos="-0.005 0 -0.0136" class="smart-glass-grid"/>
+            <geom name="grid-45" pos="0.005 0 -0.0136" class="smart-glass-grid"/>
+            <geom name="grid-46" pos="0.015 0 -0.0136" class="smart-glass-grid"/>
+            <geom name="grid-47" pos="0.025 0 -0.0136" class="smart-glass-grid"/>
+            <geom name="grid-48" pos="0.035 0 -0.0136" class="smart-glass-grid"/>
+            <geom name="grid-49" pos="0.045 0 -0.0136" class="smart-glass-grid"/>
+
+        </body>
+
+        <body name="background-pane" pos="0 0.15 0.01">
+            <geom name="grid-bgp" pos="-0 0 0" class="background-grid"/>
+        </body>
+    </worldbody>
+    <actuator>
+        <position name="eye-x-motor" joint="eye-joint-x" class="eye" ctrlrange="-1.6 1.6"/>
+        <position name="eye-y-motor" joint="eye-joint-y" class="eye" ctrlrange="-1.6 1.6"/>
+    </actuator>
+    <sensor>
+        <rangefinder name="rangefinder" site="rangefinder-site"/>
+    </sensor>
+</mujoco>

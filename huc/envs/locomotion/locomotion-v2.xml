@@ -1,0 +1,75 @@
+<?xml version="1.0"?>
+<mujoco>
+    <compiler angle="radian"/>
+    <option collision="all" timestep="0.002"/>
+    <size njmax="1000" nconmax="400"/>
+    <default class="main">
+        <default class="locomotion-translation">
+            <position ctrllimited="true" kp="10"/>
+            <joint type="slide" stiffness="0.0" damping="1.5" armature="0.0" limited="true"/>
+        </default>
+
+        <default class="eye">
+            <position ctrllimited="true" kp="10"/>
+            <joint type="hinge" stiffness="0.0" damping="0.05" armature="0.0" limited="true"/>
+        </default>
+
+        <default class="sign-translate">
+            <position ctrllimited="true" kp="10"/>
+            <joint type="slide" stiffness="0.0" damping="0.05" armature="0.0" limited="true"/>
+        </default>
+
+        <default class="sign-rotate">
+            <position ctrllimited="true" kp="10"/>
+            <joint type="hinge" stiffness="0.0" damping="0.05" armature="0.0" limited="true"/>
+        </default>
+    </default>
+    <asset>
+        <texture type="skybox" builtin="gradient" rgb1="1 1 1" rgb2="0.6 0.8 1" width="256" height="256"/>
+        <texture type="cube" name="blue-eye" file="assets/blue_eye_texture_circle.png" gridsize="3 4" gridlayout=".U..LFRB.D.."/>
+        <material name="blue-eye" texture="blue-eye" texuniform="true"/>
+        <mesh name="eye" file="assets/basic_eye_2.stl" scale="0.05 0.05 0.05"/>
+    </asset>
+    <worldbody>
+        <light name="scene_directional_light" directional="true" castshadow="false" cutoff="4" exponent="12"
+               diffuse="1 1 1" specular="0 0 0" pos=".9 .3 2.5"/>
+
+        <camera name="env" pos="0 -5 0" euler="1.6 0 0"/>
+
+        <body name="fixed-head-body" pos="0 0 0">
+            <body name="eye" pos="0 0 0" quat="0.7071068 0.7071068 0 0">
+                <geom name="eye" type="sphere" size="0.025" material="blue-eye" rgba="1 1 1 1" quat="0.6625191 0.0130711 0.7488417 0.0115643"/>
+                <camera name="eye" fovy="90"/>
+                <joint name="eye-joint-x" class="eye" axis="1 0 0" range="-1.6 0.75"/>
+                <joint name="eye-joint-y" class="eye" axis="0 1 0" range="-2 2"/>
+                <site name="rangefinder-site" quat="0 0 1 0"/>
+            </body>
+            <geom name="body-trunk" pos="0 0 -1.4" type="box" size="0.05 0.00001 0.25" rgba="1 1 0 1" />
+            <joint name="body-joint-y" class="locomotion-translation" axis="0 1 0" range="0 12"/>
+        </body>
+
+        <body name="straight-walk-path" pos="0 5 0">
+            <geom name="straight-path" type="box" pos="0 0 -2" size="1 5 0.0000001" rgba="0 0 0 1"/>
+        </body>
+
+        <body name="movable-sign" pos="0 0 0">
+            <geom name="destination-sign" type="box" pos="0 0 0" size="0.1 0.00001 0.1" rgba="1 0 0 1"/>
+            <joint name="sign-joint-x" class="sign-translate" axis="1 0 0" range="-1 1"/>
+            <joint name="sign-joint-y" class="sign-translate" axis="0 1 0" range="0 10"/>
+            <joint name="sign-joint-z" class="sign-translate" axis="0 0 1" range="-0.5 0.5"/>
+            <joint name="sign-joint-hinge-z" class="sign-rotate" axis="0 0 1" range="-1 1"/>
+        </body>
+    </worldbody>
+    <actuator>
+        <position name="eye-x-motor" joint="eye-joint-x" class="eye" ctrlrange="-1.6 0.75"/>
+        <position name="eye-y-motor" joint="eye-joint-y" class="eye" ctrlrange="-2 2"/>
+        <position name="body-y-motor" joint="body-joint-y" class="locomotion-translation" ctrlrange="0 12"/>
+        <position name="sign-x-motor" joint="sign-joint-x" class="sign-translate" ctrlrange="-1 1"/>
+        <position name="sign-y-motor" joint="sign-joint-y" class="sign-translate" ctrlrange="0 10"/>
+        <position name="sign-z-motor" joint="sign-joint-z" class="sign-translate" ctrlrange="-0.5 0.5"/>
+        <position name="sign-z-motor-hinge" joint="sign-joint-hinge-z" class="sign-rotate" ctrlrange="-1 1"/>
+    </actuator>
+    <sensor>
+        <rangefinder name="rangefinder" site="rangefinder-site"/>
+    </sensor>
+</mujoco>
