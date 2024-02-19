@@ -1,15 +1,15 @@
-# RepositoryName
+# Heads-Up Multitasker
 Heads-Up Multitasker -- Code Repository. This is the more than the project's playground, but also replication factory, and the extension start-off place. Please wait for my updates patiently, thank you.
 
 ## Publications
-- [publication_name](publication_link), VENUE'XX
+- [Proceedings of the CHI Conference on Human Factors in Computing Systems](publication_link), CHI'24
 ```
 <Bibtext>
 
 ```
 
 ## Contact person
-- [Name](personal_website)
+- [Bai Yunpeng](https://baiyunpeng1949.github.io/bai.yunpeng/)
 
 
 ## Project links
@@ -19,15 +19,15 @@ Heads-Up Multitasker -- Code Repository. This is the more than the project's pla
 
 
 ## Requirements
-- 
+- (will be finished soon)
 
 
 ## Installation
-- 
+- (will be finished soon)
 
 
 ## Application Execution 
-- 
+- (will be finished soon)
 
 
 ## References
