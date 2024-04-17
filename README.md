@@ -10,7 +10,8 @@ Heads-Up Multitasker -- Code Repository. This is the more than the project's pla
   author={Yunpeng, Bai and Aleksi, Ikkala and Oulasvirta, Antti and Shengdong, Zhao and Lucia, J., Wang and Pengzhi, Yang and Peisen, Xu},
   booktitle={Proceedings of the 2024 CHI Conference on Human Factors in Computing Systems},
   pages={1--18},
-  year={2024}
+  year={2024},
+  doi={10.1145/3613904.3642540},
 }
 ```
 
