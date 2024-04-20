@@ -50,10 +50,7 @@ Heads-Up Multitasker -- Code Repository. This is the more than the project's pla
 
 
 ## Contributors
-Bai Yunpeng
-Aleksi Ikkala
-Antti Oulasvirta
-Shengdong Zhao
+Bai Yunpeng, Aleksi Ikkala, Antti Oulasvirta, Shengdong Zhao, 
 
 
 
