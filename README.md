@@ -6,7 +6,7 @@ Heads-Up Multitasker -- Code Repository. This is the more than the project's pla
 ```
 @inproceedings{bai2024hum,
   title={Heads-Up Multitasker: Simulating Attention Switching On Optical Head-Mounted Displays},
-  author={Yunpeng, Bai and Aleksi, Ikkala and Oulasvirta, Antti and Shengdong, Zhao and Lucia, J., Wang and Pengzhi, Yang and Peisen, Xu},
+  author={Bai, Yunpeng and Ikkala, Aleksi and Oulasvirta, Antti and Zhao, Shengdong and Wang, Lucia J and Yang, Pengzhi and Xu, Peisen},
   booktitle={Proceedings of the 2024 CHI Conference on Human Factors in Computing Systems},
   pages={1--18},
   year={2024},
