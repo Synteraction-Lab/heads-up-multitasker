@@ -15,7 +15,7 @@ Heads-Up Multitasker -- Code Repository. This is the more than the project's pla
 ```
 
 ## Contact person
-- [Bai Yunpeng](https://baiyunpeng1949.github.io/bai.yunpeng/)
+- [Bai Yunpeng][https://baiyunpeng1949.github.io/bai.yunpeng/](https://baiyunpeng1949.github.io/)
 
 
 ## Project links
