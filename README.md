@@ -4,7 +4,6 @@ Heads-Up Multitasker -- Code Repository. This is the more than the project's pla
 ## Publications
 - [Proceedings of the CHI Conference on Human Factors in Computing Systems]([publication_link](https://programs.sigchi.org/chi/2024/program/content/147957)), CHI'24
 ```
-<Bibtext>
 @inproceedings{bai2024hum,
   title={Heads-Up Multitasker: Simulating Attention Switching On Optical Head-Mounted Displays},
   author={Yunpeng, Bai and Aleksi, Ikkala and Oulasvirta, Antti and Shengdong, Zhao and Lucia, J., Wang and Pengzhi, Yang and Peisen, Xu},
