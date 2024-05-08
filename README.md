@@ -19,7 +19,7 @@ Heads-Up Multitasker -- Code Repository. This is the more than the project's pla
 
 
 ## Project links
-- Project folder: [here](https://drive.google.com/drive/folders/1WEG9DFROf_-a5l_sA2YVunc2B2P70__6?ths=true) (New visitors need to request authority)
+- Project folder: [here](https://drive.google.com/drive/folders/1WEG9DFROf_-a5l_sA2YVunc2B2P70__6?ths=true) 
 - Documentation: [here](guide_link)
 - Full paper in this repo: [here](https://github.com/Synteraction-Lab/heads-up-multitasker/blob/main/Heads-Up%20Multitasker%20Full%20Paper.pdf); Of course you may access it through ACM digital lib.
 - [Version info](VERSION.md)
@@ -36,7 +36,7 @@ Heads-Up Multitasker -- Code Repository. This is the more than the project's pla
 
 ## Installation
 - Just copy the repo to your local machine.
-- If you want to train the model, GPU is needed. If you want to use my pre-trained model, good luck! Because models are dependent on hardware, I trained models on two different machines, one cannot run on the other ...
+- If you want to train the model, GPU is needed. If you want to use my pre-trained model, good luck! Since models are dependent on hardware, I trained models on two different machines, sadly one cannot run on the other ...
 - If you want to run codes on google cloud or any linux platform, remember to
   ```bash
   export MUJOCO_GL=egl
@@ -45,7 +45,7 @@ Heads-Up Multitasker -- Code Repository. This is the more than the project's pla
 ## Application Execution 
 - If you want to replicate this work, run main.py; remember to set up the configuration file! 
 - If you want to replicate study results, use data in the study folder, and run jupyter-notebook files. These files also contain important parameter inference process.
-- At the end of the day, contact me for help, that is the most efficient way. My codes are still shitty in terms of structure. I need time to fix this.
+- Contacting me for help is the most efficient replicating way. I am still maintaining the current repo.
 
 
 ## Contributors
