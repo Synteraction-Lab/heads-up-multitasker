@@ -2,7 +2,7 @@
 Heads-Up Multitasker -- Code Repository. This is the more than the project's playground, but also replication factory, and the extension start-off place. Please wait for my updates patiently, thank you.
 
 ## Publications
-- [Proceedings of the CHI Conference on Human Factors in Computing Systems]([publication_link](https://programs.sigchi.org/chi/2024/program/content/147957)), CHI'24
+[Proceedings of the CHI Conference on Human Factors in Computing Systems]([publication_link](https://programs.sigchi.org/chi/2024/program/content/147957)), CHI'24
 ```
 @inproceedings{bai2024hum,
   title={Heads-Up Multitasker: Simulating Attention Switching On Optical Head-Mounted Displays},
@@ -22,7 +22,6 @@ Heads-Up Multitasker -- Code Repository. This is the more than the project's pla
 - [CHI presentation slides](https://docs.google.com/presentation/d/11h_Gqf5_tsO0lDSJ372IiiSVOCKMHB8FO7So-E6-HSQ/edit#slide=id.p)
 - [Download presentation slides from Shareslide](https://www.slideshare.net/slideshow/heads-up-multitasker-chi-2024-presentation-pdf/268559304)
 - [Project folder](https://drive.google.com/drive/folders/1WEG9DFROf_-a5l_sA2YVunc2B2P70__6?ths=true) 
-- [Documentation](guide_link)
 - [Full paper](https://github.com/Synteraction-Lab/heads-up-multitasker/blob/main/Heads-Up%20Multitasker%20Full%20Paper.pdf); Of course you may access it through [ACM digital lib](https://doi.org/10.1145/3613904.3642540).
 - [Version info](VERSION.md)
 
