@@ -20,6 +20,7 @@ Heads-Up Multitasker -- Code Repository. This is the more than the project's pla
 
 ## Project links
 - [CHI presentation slides](https://docs.google.com/presentation/d/11h_Gqf5_tsO0lDSJ372IiiSVOCKMHB8FO7So-E6-HSQ/edit#slide=id.p)
+- [CHI presentation video](https://www.youtube.com/watch?v=B7MZXvce3y8&t=2s)
 - [Download presentation slides from Shareslide](https://www.slideshare.net/slideshow/heads-up-multitasker-chi-2024-presentation-pdf/268559304)
 - [Project folder](https://drive.google.com/drive/folders/1WEG9DFROf_-a5l_sA2YVunc2B2P70__6?ths=true) 
 - [Full paper](https://github.com/Synteraction-Lab/heads-up-multitasker/blob/main/Heads-Up%20Multitasker%20Full%20Paper.pdf); Of course you may access it through [ACM digital lib](https://doi.org/10.1145/3613904.3642540).
